@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import Table from '../Table/Table';
 import Swal from 'sweetalert2';
 import api from '../api';
-import './App.css';
+import '../App.css';
 
 function List() {
   const [product, setProduct] = useState({
