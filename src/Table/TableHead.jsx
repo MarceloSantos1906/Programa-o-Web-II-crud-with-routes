@@ -2,8 +2,8 @@ function TableHead({ headers }) {
   return (
     <thead>
       <tr>
-        {headers.map((keys) => {
-          return <th key={keys}>{keys}</th>;
+        {headers.map((key) => {
+          return <th key={key}>{key}</th>;
         })}
       </tr>
     </thead>

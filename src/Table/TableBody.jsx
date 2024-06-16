@@ -3,14 +3,36 @@ function TableBody({ values, headers, onEdit, onDelete }) {
     <tbody>
       {values.map((item, index) => {
         return (
-          !!item && (
+          item && (
             <tr key={index}>
-              {headers.map((h) => {
-                return <td key={h}>{item[h]}</td>;
+              {headers.map((header) => {
+                if (Array.isArray(item[header])) {
+                  return (
+                    <td key={header}>
+                      <div>
+                      {item[header].map((book, i) => (
+                        <div key={i}>
+                          <img src={book.image_url} alt={book.name}/>
+                          <p>{book.name}</p>
+                        </div>
+                      ))}
+                      </div>
+                    </td>
+                  );
+                } else 
+                return (
+                  <td key={header}>
+                    {typeof item[header] === 'object' ? JSON.stringify(item[header]) : item[header]}
+                  </td>
+                );
               })}
               <td>
-                <button onClick={() => onEdit(item['id'])}>Editar</button>
-                <button onClick={() => onDelete(item['id'])}>Excluir</button>
+                <div>
+                  <button onClick={() => onEdit(item['id'])}>Editar</button>
+                </div>
+                <div>
+                  <button onClick={() => onDelete(item['id'])}>Excluir</button>
+                </div>
               </td>
             </tr>
           )

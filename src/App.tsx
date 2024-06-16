@@ -12,7 +12,10 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Pages.Home />} />
-            <Route path="register" element={<Pages.Register />} />
+            <Route path="RegisterPerson" element={<Pages.RegisterPerson />} />
+            <Route path="RegisterEmployee" element={<Pages.RegisterEmployee />} />
+            <Route path="RegisterAuthor" element={<Pages.RegisterAuthor />} />
+            <Route path="RegisterGenre" element={<Pages.RegisterGenre />} />
             <Route path="*" element={<Pages.NotFound />} />
           </Route>
         </Routes>
@@ -30,7 +33,16 @@ function Layout() {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/register">Register</Link>
+            <Link to="/RegisterPerson">Register Person</Link>
+          </li>
+          <li>
+            <Link to="/RegisterEmployee">Register Employee</Link>
+          </li>
+          <li>
+            <Link to="/RegisterAuthor">Register Author</Link>
+          </li>
+          <li>
+            <Link to="/RegisterGenre">Register Genre</Link>
           </li>
           <li>
             <Link to="/non-existent">Nothing Here</Link>
