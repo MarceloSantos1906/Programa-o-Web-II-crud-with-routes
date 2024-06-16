@@ -7,36 +7,36 @@ import api from '../api';
 import '../App.css';
 
 function List() {
-  const [product, setProduct] = useState({
+  const [person, setPerson] = useState({
     name: '',
     price: '',
     description: '',
   });
-  const [products, setProducts] = useState([]);
+  const [persons, setPersons] = useState([]);
 
   const handleChange = (e) => {
-    let newProduct = {
-      ...product,
+    let newPerson = {
+      ...person,
       [e.target.name]: e.target.value,
     };
-    setProduct(newProduct);
+    setPerson(newPerson);
   };
 
   const cadastrar = () => {
-    if (product.name == '') {
+    if (person.name == '') {
       toast.error('Nome  não pode ser vazio');
       return;
-    } else if (Number(product.price) <= 0) {
+    } else if (Number(person.price) <= 0) {
       toast.error('Salario não pode ser negativo');
       return;
-    } else if (product.price == '') {
+    } else if (person.price == '') {
       toast.error('Salario não pode ser vazio');
       return;
     }
 
-    if (product.id) {
+    if (person.id) {
       api
-        .patch(`products/${product.id}`, product)
+        .patch('person/${person.id}', person)
         .then((response) => {
           Swal.fire({
             position: 'top-end',
@@ -45,8 +45,8 @@ function List() {
             showConfirmButton: false,
             timer: 10000,
           });
-          setProduct({ name: '', price: '', description: '' });
-          getProducts();
+          setPerson({ name: '', price: '', description: '' });
+          getPersons();
         })
         .catch((e) => {
           Swal.fire({
@@ -57,7 +57,7 @@ function List() {
         });
     } else {
       api
-        .post('products', product)
+        .post('person', person)
         .then((response) => {
           Swal.fire({
             position: 'top-end',
@@ -66,8 +66,8 @@ function List() {
             showConfirmButton: false,
             timer: 10000,
           });
-          setProduct({ name: '', price: '', description: '' });
-          getProducts();
+          setPerson({ name: '', price: '', description: '' });
+          getPersons();
         })
         .catch((e) => {
           Swal.fire({
@@ -79,14 +79,14 @@ function List() {
     }
   };
 
-  async function getProducts() {
-    await api.get('products').then((response) => setProducts(response.data));
+  async function getPersons() {
+    await api.get('person').then((response) => setPersons(response.data));
   }
 
   async function onEdit(id) {
     await api
-      .get(`products/${id}`)
-      .then((response) => setProduct(response.data));
+      .get('person/${id}')
+      .then((response) => setPerson(response.data));
   }
 
   function onDelete(id) {
@@ -110,10 +110,10 @@ function List() {
       .then((result) => {
         if (result.isConfirmed) {
           api
-            .delete(`products/${id}`)
+            .delete('person/${id}')
             .then((response) => {
               toast.done('Excluído com sucesso.');
-              getProducts();
+              getPersons();
             })
             .catch((e) => {
               if (e == 'AxiosError: Request failed with status code 404') {
@@ -141,19 +141,19 @@ function List() {
   }
 
   useEffect(() => {
-    getProducts();
+    getPersons();
   }, []);
 
   return (
     <>
       <div className="container">
-        <h2>Cadastro de products</h2>
+        <h2>Cadastro de Pessoas</h2>
         <div className="mb-3">
           <label class="form-label">Nome: </label>
           <input
             type="text"
             name="name"
-            defaultValue={product.name}
+            defaultValue={person.name}
             onChange={handleChange}
             className="form-control"
           />
@@ -165,7 +165,7 @@ function List() {
             step="0.01"
             min="0"
             name="price"
-            defaultValue={product.price}
+            defaultValue={person.price}
             onChange={handleChange}
             className="form-control"
           />
@@ -175,7 +175,7 @@ function List() {
           <input
             type="text"
             name="description"
-            defaultValue={product.description}
+            defaultValue={person.description}
             onChange={handleChange}
             className="form-control"
           />
@@ -192,7 +192,7 @@ function List() {
         </div>
         <ToastContainer />
       </div>
-      <Table itens={products} onEdit={onEdit} onDelete={onDelete} />
+      <Table itens={persons} onEdit={onEdit} onDelete={onDelete} />
     </>
   );
 }
