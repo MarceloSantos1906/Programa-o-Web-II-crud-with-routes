@@ -28,7 +28,7 @@ function List() {
 
     if (genre.id) {
       api
-        .patch('genres/${genre.id}', genre)
+        .patch('genre/${genre.id}', genre)
         .then((response) => {
           Swal.fire({
             position: 'top-end',
@@ -49,7 +49,7 @@ function List() {
         });
     } else {
       api
-        .post('genres', genre)
+        .post('genre', genre)
         .then((response) => {
           Swal.fire({
             position: 'top-end',
@@ -72,12 +72,12 @@ function List() {
   };
 
   async function getGenres() {
-    await api.get('genres').then((response) => setGenres(response.data));
+    await api.get('genre').then((response) => setGenres(response.data));
   }
 
   async function onEdit(id) {
     await api
-      .get('genres/${id}')
+      .get('genre/${id}')
       .then((response) => setGenre(response.data));
   }
 
@@ -102,7 +102,7 @@ function List() {
       .then((result) => {
         if (result.isConfirmed) {
           api
-            .delete('genres/${id}')
+            .delete('genre/${id}')
             .then((response) => {
               toast.done('Excluído com sucesso.');
               getGenres();
@@ -139,7 +139,7 @@ function List() {
   return (
     <>
       <div className="container">
-        <h2>Cadastro de Autores</h2>
+        <h2>Cadastro de Generos</h2>
         <div className="mb-3">
           <label className="form-label">Nome: </label>
           <input
