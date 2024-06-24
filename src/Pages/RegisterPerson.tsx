@@ -1,7 +1,7 @@
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useEffect, useState } from 'react';
-import Table from '../Table/Table';
+import Table from '../TableEmployees/Table';
 import Swal from 'sweetalert2';
 import api from '../api';
 import '../App.css';

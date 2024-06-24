@@ -17,6 +17,34 @@
   text-align: left;
 }
 
+.tableEmployees {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.tableEmployees th, .tableEmployees td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.tableEmployees th:nth-child(4) {
+  display: none;
+}
+
+.tableEmployees th:nth-child(5) {
+  display: none;
+}
+
+.tableEmployees td:nth-child(4) {
+  display: none;
+}
+
+.tableEmployees td:nth-child(5) {
+  display: none;
+}
+
 .tdItem {
   flex: content;
 }
