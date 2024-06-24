@@ -17,6 +17,7 @@ export default function App() {
             <Route path="RegisterAuthor" element={<Pages.RegisterAuthor />} />
             <Route path="RegisterGenre" element={<Pages.RegisterGenre />} />
             <Route path="*" element={<Pages.NotFound />} />
+            <Route path='RegisterBook' element={<Pages.RegisterBook/>}/>
           </Route>
         </Routes>
       </div>
@@ -45,7 +46,10 @@ function Layout() {
             <Link to="/RegisterGenre">Register Genre</Link>
           </li>
           <li>
-            <Link to="/non-existent">Nothing Here</Link>
+            <Link to="/RegisterBook">Register Book</Link>
+          </li>
+          <li>
+            <Link to="/*">Nothing Here</Link>
           </li>
         </ul>
       </nav>
