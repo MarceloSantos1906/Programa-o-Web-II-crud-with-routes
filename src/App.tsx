@@ -31,9 +31,6 @@ function Layout() {
       <nav>
         <ul>
           <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
             <Link to="/RegisterPerson">Register Person</Link>
           </li>
           <li>
@@ -47,9 +44,6 @@ function Layout() {
           </li>
           <li>
             <Link to="/RegisterBook">Register Book</Link>
-          </li>
-          <li>
-            <Link to="/*">Nothing Here</Link>
           </li>
         </ul>
       </nav>

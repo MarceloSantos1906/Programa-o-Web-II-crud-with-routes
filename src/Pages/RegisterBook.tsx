@@ -1,7 +1,7 @@
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useEffect, useState } from 'react';
-import Table from '../Table/Table';
+import Table from '../TableRegisterBooks/Table';
 import Swal from 'sweetalert2';
 import api from '../api';
 import '../App.css';
@@ -10,7 +10,7 @@ function List() {
   const [book, setBook] = useState({
     name: '',
     image_url: '',
-    genreId: 0,
+    genreId: '',
     authorsId: []
   });
   const [books, setBooks] = useState([]);
@@ -208,11 +208,9 @@ function List() {
             Cadastrar
           </button>
         </div>
-        <ToastContainer />
       </div>
-      <Table itens={books} onEdit={onEdit} onDelete={onDelete} />
+      <Table items={books} onEdit={onEdit} onDelete={onDelete} />
     </>
   );
 }
-
 export default List;
