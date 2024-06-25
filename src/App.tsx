@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, Outlet, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Outlet } from 'react-router-dom';
 import Pages from './Pages';
 import './App.css';
 
@@ -28,24 +28,28 @@ export default function App() {
 function Layout() {
   return (
     <div>
+      <hr />
       <nav>
-        <ul>
-          <li>
-            <Link to="/RegisterPerson">Register Person</Link>
-          </li>
-          <li>
-            <Link to="/RegisterEmployee">Register Employee</Link>
-          </li>
-          <li>
-            <Link to="/RegisterAuthor">Register Author</Link>
-          </li>
-          <li>
-            <Link to="/RegisterGenre">Register Genre</Link>
-          </li>
-          <li>
-            <Link to="/RegisterBook">Register Book</Link>
-          </li>
-        </ul>
+        <button type='button' onClick={(e) => {
+        e.preventDefault();
+        window.location.href='/RegisterPerson';
+        }}>Register Person</button>
+        <button type='button' onClick={(e) => {
+        e.preventDefault();
+        window.location.href='/RegisterEmployee';
+        }}>Register Employee</button>
+        <button type='button' onClick={(e) => {
+        e.preventDefault();
+        window.location.href='/RegisterAuthor';
+        }}>Register Author</button>
+        <button type='button' onClick={(e) => {
+        e.preventDefault();
+        window.location.href='/RegisterGenre';
+        }}>Register Genre</button>
+        <button type='button' onClick={(e) => {
+        e.preventDefault();
+        window.location.href='/RegisterBook';
+        }}>Register Book</button>
       </nav>
       <hr />
       <Outlet />
