@@ -26,9 +26,9 @@ function List() {
       return;
     }
 
-    if (author.id) {
+    if (id) {
       api
-        .patch('authors/${author.id}', author)
+        .patch(`authors/${id}`, author)
         .then((response) => {
           Swal.fire({
             position: 'top-end',
@@ -77,7 +77,7 @@ function List() {
 
   async function onEdit(id) {
     await api
-      .get('authors/${id}')
+      .get(`authors/${id}`)
       .then((response) => setAuthor(response.data));
   }
 
@@ -102,7 +102,7 @@ function List() {
       .then((result) => {
         if (result.isConfirmed) {
           api
-            .delete('authors/${id}')
+            .delete(`/authors/${id}`)
             .then((response) => {
               toast.done('Excluído com sucesso.');
               getAuthors();

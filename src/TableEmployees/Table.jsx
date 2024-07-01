@@ -3,7 +3,6 @@ import TableBody from './TableBody';
 
 function Table({ itens, onEdit, onDelete }) {
   const headers = itens && itens.length > 0 ? Object.keys(itens[0]) : [];
-  console.log(headers);
   return (
     <div className="container">
       <table className="tableEmployees">

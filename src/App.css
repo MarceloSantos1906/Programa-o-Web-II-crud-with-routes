@@ -64,13 +64,20 @@ button {
   background-color: #0056b3;
 }
 
-.tableAuthors {
+.tableAuthors, 
+.tableEmployees, 
+.tableGenre {
   width: 100%;
   border: 1px solid #ccc;
   border-radius: 8px;
 }
 
-.tableAuthors th, .tableAuthors td {
+.tableEmployees th, 
+.tableEmployees td,
+.tableAuthors th, 
+.tableAuthors td, 
+.tableGenre th, 
+.tableGenre td {
   border: 1px solid #ddd;
   padding: 8px;
   text-align: left;
@@ -85,22 +92,6 @@ button {
   display: none;
 }
 
-.tableAuthors td:nth-child(3) {
-  display: none;
-}
-
-.tableEmployees {
-  width: 100%;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-}
-
-.tableEmployees th, .tableEmployees td {
-  border: 1px solid #ddd;
-  padding: 8px;
-  text-align: left;
-}
-
 .tableEmployees th:nth-child(4) {
   display: none;
 }
@@ -109,6 +100,9 @@ button {
   display: none;
 }
 
+.tableAuthors td:nth-child(3) {
+  display: none;
+}
 .tableEmployees td:nth-child(4) {
   display: none;
 }

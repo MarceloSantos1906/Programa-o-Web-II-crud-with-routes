@@ -32,7 +32,7 @@ function List() {
 
     if (person.id) {
       api
-        .patch('person/${person.id}', person)
+        .patch(`person/${id}`, person)
         .then((response) => {
           Swal.fire({
             position: 'top-end',
@@ -81,7 +81,7 @@ function List() {
 
   async function onEdit(id) {
     await api
-      .get('person/${id}')
+      .get(`person/${id}`)
       .then((response) => setPerson(response.data));
   }
 
@@ -106,7 +106,7 @@ function List() {
       .then((result) => {
         if (result.isConfirmed) {
           api
-            .delete('person/${id}')
+            .delete(`person/${id}`)
             .then((response) => {
               toast.done('Excluído com sucesso.');
               getPersons();

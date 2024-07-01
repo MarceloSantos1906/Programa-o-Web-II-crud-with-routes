@@ -1,7 +1,7 @@
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useEffect, useState } from 'react';
-import Table from '../TableAuthors/Table';
+import Table from '../TableGenre/Table';
 import Swal from 'sweetalert2';
 import api from '../api';
 import '../App.css';
@@ -28,7 +28,7 @@ function List() {
 
     if (genre.id) {
       api
-        .patch('genre/${genre.id}', genre)
+        .patch(`genre/${id}`, genre)
         .then((response) => {
           Swal.fire({
             position: 'top-end',
@@ -77,7 +77,7 @@ function List() {
 
   async function onEdit(id) {
     await api
-      .get('genre/${id}')
+      .get(`genre/${id}`)
       .then((response) => setGenre(response.data));
   }
 
@@ -102,7 +102,7 @@ function List() {
       .then((result) => {
         if (result.isConfirmed) {
           api
-            .delete('genre/${id}')
+            .delete(`genre/${id}`)
             .then((response) => {
               toast.done('Excluído com sucesso.');
               getGenres();
