@@ -26,9 +26,9 @@ function List() {
       return;
     }
 
-    if (id) {
+    if (author.id) {
       api
-        .patch(`authors/${id}`, author)
+        .patch(`authors/${author.id}`, author)
         .then((response) => {
           Swal.fire({
             position: 'top-end',
@@ -43,8 +43,8 @@ function List() {
         .catch((e) => {
           Swal.fire({
             icon: 'error',
-            title: 'Oops...',
-            text: 'Erro ao efetuar o cadastro: ' + e,
+            title: 'Erro ao efetuar o cadastro',
+            text: e.response.message,
           });
         });
     } else {

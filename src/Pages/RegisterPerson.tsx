@@ -32,7 +32,7 @@ function List() {
 
     if (person.id) {
       api
-        .patch(`person/${id}`, person)
+        .patch(`person/${person.id}`, person)
         .then((response) => {
           Swal.fire({
             position: 'top-end',
@@ -45,10 +45,11 @@ function List() {
           getPersons();
         })
         .catch((e) => {
+          console.log(e);
           Swal.fire({
             icon: 'error',
-            title: 'Oops...',
-            text: 'Erro ao efetuar o cadastro: ' + e,
+            title: 'Erro ao efetuar o cadastro',
+            text: e.response.data.message,
           });
         });
     } else {
@@ -68,8 +69,8 @@ function List() {
         .catch((e) => {
           Swal.fire({
             icon: 'error',
-            title: 'Oops...',
-            text: 'Erro ao efetuar o cadastro: ' + e,
+            title: 'Erro ao efetuar o cadastro',
+            text: e.response.data.message,
           });
         });
     }
@@ -112,14 +113,18 @@ function List() {
               getPersons();
             })
             .catch((e) => {
-              if (e == 'AxiosError: Request failed with status code 404') {
+              if (e.response.data.status = 404) {
                 Swal.fire({
                   icon: 'error',
                   title: 'Oops...',
                   text: 'Cadastro não encontrado',
                 });
               } else {
-                toast.error(e);
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Erro ao excluir cadastro',
+                  text: e.response.data.message,
+                });
               }
             });
           swalWithBootstrapButtons.fire({

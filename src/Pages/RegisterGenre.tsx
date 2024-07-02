@@ -28,7 +28,7 @@ function List() {
 
     if (genre.id) {
       api
-        .patch(`genre/${id}`, genre)
+        .patch(`genre/${genre.id}`, genre)
         .then((response) => {
           Swal.fire({
             position: 'top-end',
